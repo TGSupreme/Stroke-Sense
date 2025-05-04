@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>StrokeSense | Prediction Result</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            flex: 1 0 auto;
+            background-image: url("{{ url_for('static', filename='img/hero/Main-bg.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            padding-top: 0;
+            padding-bottom: 60px;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='img/logo/loder.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <!-- Header (same as your main template) -->
+    <header>
+        <!--? Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="{{ url_for('home') }}"><img
+                                        src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                                            <!-- <li><a href="about.html">About</a></li> -->
+                                            <li><a href="{{ url_for('services') }}">Services</a></li>
+                                            <!-- <li><a href="contact.html">Contact</a></li> -->
+                                            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-right-btn f-right d-none d-lg-block ml-15">
+                                    <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+
+    <main>
+        <!-- Result Section Start -->
+        <section class="result-section section-padding"
+            style="background: url('assets/img/gallery/wave-bg.png') no-repeat center center / cover;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="result-container text-center bg-light p-5 rounded shadow" data-aos="fade-up">
+                            <h1 class="result-heading mb-4">Prediction Result</h1>
+                            <p class="result-content lead text-primary">{{ prediction }}</p>
+                            <p class="feedback-message text-secondary mt-3">We care about your health. Please consult a
+                                medical professional for more details.</p>
+                            <a href="{{ url_for('home') }}" class="btn btn-custom mt-4">Go Back Home</a>
+                            <h5 class="mt-4"><a href="{{ url_for('feedback') }}" class="text-warning">Give Feedback</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Result Section End -->
+    </main>
+
+
+
+    <!-- Footer Start -->
+    <footer style="background-image: url('{{ url_for('static', filename='img/gallery/footer-bg.png') }}');">
+        <div class="footer-wrappr section-bg3">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row">
+                            <div class="col-xl-10">
+                                <div class="footer-copy-right">
+                                    <p>© 2025 StrokeSense - All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+    <script src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.slicknav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/animated.headline.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <script>
+        window.onload = function () {
+            const preloader = document.getElementById('preloader-active');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+
+</html>

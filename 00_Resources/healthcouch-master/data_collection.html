@@ -1,0 +1,259 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>StrokeSense | Stroke Prediction</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            background-image: url("assets/img/hero/Main-bg.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            padding-top: 0;
+            padding-bottom: 60px;
+        }
+
+
+        .footer-wrappr {
+            flex-shrink: 0;
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+        }
+
+        .login-box {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            background: #f9f9f9;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .login-box h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-box .form-group input,
+        .login-box .form-group textarea {
+            height: 45px;
+        }
+
+        .login-box .btn {
+            width: 100%;
+        }
+
+        .form-check {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!--? Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="services.html">Services</a></li>
+                                            <!-- <li><a href="contact.html">Contact</a></li> -->
+                                            <li><a href="feedback.html">Feedback</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+
+    <!-- Main Stroke Prediction Form -->
+    <main>
+        <div class="container login-container">
+            <div class="login-box">
+                <h2>Enter Details</h2>
+                <form action="/predict" method="post" id="contactForm" novalidate="novalidate">
+
+                    <!-- Gender -->
+                    <div class="mb-4">
+                        <label class="form-label">Gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="female" name="gender" value="0" required>
+                            <label class="form-check-label option" for="female">Female</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="male" name="gender" value="1">
+                            <label class="form-check-label option" for="male">Male</label>
+                        </div>
+                    </div>
+
+                    <!-- Hypertension -->
+                    <div class="mb-4">
+                        <label class="form-label">Hypertension:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="no_ht" name="hypertension" value="0"
+                                required>
+                            <label class="form-check-label option" for="no_ht">No</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="yes_ht" name="hypertension" value="1">
+                            <label class="form-check-label option" for="yes_ht">Yes</label>
+                        </div>
+                    </div>
+
+                    <!-- Heart Disease -->
+                    <div class="mb-4">
+                        <label class="form-label">Heart Disease:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="no_hd" name="heart_disease" value="0"
+                                required>
+                            <label class="form-check-label option" for="no_hd">No</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="yes_hd" name="heart_disease" value="1">
+                            <label class="form-check-label option" for="yes_hd">Yes</label>
+                        </div>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="mb-4">
+                        <label for="age" class="form-label">Age:</label>
+                        <input type="number" class="form-control" name="age" required>
+                    </div>
+
+                    <!-- Average Glucose Level -->
+                    <div class="mb-4">
+                        <label for="avg_glucose_level" class="form-label">Average Glucose Level:</label>
+                        <input type="number" step="any" class="form-control" name="avg_glucose_level" required>
+                    </div>
+
+                    <!-- BMI -->
+                    <div class="mb-4">
+                        <label for="bmi" class="form-label">BMI:</label>
+                        <input type="number" step="any" class="form-control" name="bmi" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrappr section-bg3" data-background="assets/img/gallery/footer-bg.png">
+            <!-- Footer content here -->
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row">
+                            <div class="col-xl-10 ">
+                                <div class="footer-copy-right">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Copyright &copy;
+                                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                        This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                            href="https://colorlib.com" target="_blank">Colorlib</a>
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up -->
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/animated.headline.js"></script>
+    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.sticky.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

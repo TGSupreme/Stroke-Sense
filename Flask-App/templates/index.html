@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Health | Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gijgo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animated-headline.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
+
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='img/logo/loder.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!--? Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav> 
+                                        <ul id="navigation">
+                                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                                            <!-- <li><a href="about.html">About</a></li> -->
+                                            <li><a href="{{ url_for('services') }}">Services</a></li>
+                                            <!-- <li><a href="contact.html">Contact</a></li> -->
+                                            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-right-btn f-right d-none d-lg-block ml-15">
+                                    <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
+                                </div>
+                            </div>
+                        </div>   
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? Slider Area Start-->
+        <div class="slider-area">
+            <div class="slider-active dot-style">
+                <!-- Slider Single -->
+                <div class="single-slider d-flex align-items-center slider-height">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-7 col-lg-8 col-md-10 ">
+                             <div class="hero-wrapper">
+                                <!-- Video icon -->
+                                <div class="video-icon">
+                                    <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0" data-animation="bounceIn" data-delay=".4s">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="hero__caption">
+                                    <h1 data-animation="fadeInUp" data-delay=".3s">StrokeSense </h1>
+                                    <p data-animation="fadeInUp" data-delay=".6s">Your heart's silent alarm -<br> stay ahead of stroke</p>
+                                    <a href="{{ url_for('services') }}" class="btn" data-animation="fadeInLeft" data-delay=".3s">Take a Service</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    </div>
+</div>
+<!-- Slider Area End -->
+<!--? About-2 Area Start -->
+<div class="about-area2 section-padding40">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-12">
+                <!-- about-img -->
+                <div class="about-img">
+                    <img src="{{ url_for('static', filename='img/gallery/about.png') }}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <div class="about-caption">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle mb-35">
+                        <h2>Early Detection=<br>Better Outcomes</h2>
+                    </div>
+                    <p class="pera-top mb-40">Almost before we knew it, we had left the ground</p>
+                    <p class="pera-bottom mb-30">It's time to check your health. Routine screening before you have any signs or symptoms of cancer can mean better outcomes for your health—that means more treatment options, more healthy days ahead and more time with the people you love</p>
+                    <div class="icon-about">
+                        <img src="{{ url_for('static', filename='img/icon/about1.svg') }}" alt="" class="mr-20">
+                        <img src="{{ url_for('static', filename='img/icon/about2.svg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About-2 Area End -->
+
+<section class="wantToWork-area section-bg3" data-background="{{ url_for('static', filename='img/gallery/section_bg01.png') }}">
+    <div class="container">
+        <div class="wants-wrapper w-padding2">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-xl-7 col-lg-9 col-md-8">
+                    <div class="wantToWork-caption wantToWork-caption2">
+                        <h2>Dive for another<br>preventions</h2>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-4">
+                    <a href="{{ url_for('services') }}" class="btn f-right sm-left">Take a Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--? Services Area Start -->
+<div class="service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                        <img src="{{ url_for('static', filename='img/icon/services1.svg') }}" alt="">
+                    </div>
+                    <div class="cat-cap">
+                        <h5><a href="{{ url_for('stroke_input') }}">Stroke Detection</a></h5>
+                        <p>Dive for fast and reliable stroke risk assessment and support, powered by a machine learning model to provide accurate, personalized insights — helping users take proactive steps.</p>
+                        <a href="{{ url_for('stroke_input') }}" class="try-now-btn">Try Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                        <img src="{{ url_for('static', filename='img/icon/services2.svg') }}" alt="">
+                    </div>
+                    <div class="cat-cap">
+                        <h5><a href="{{ url_for('services') }}">Knee Osteoarthritis</a></h5>
+                        <p>We deliver early classification of Knee Osteoarthritis using a deep learning model trained on clinical data, ensuring accurate and trustworthy joint health insights.</p>
+                        <a href="{{ url_for('services') }}" class="try-now-btn">Try Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-cat text-center mb-50">
+                    <div class="cat-icon">
+                        <img src="{{ url_for('static', filename='img/icon/skin-cancer.png') }}" alt="">
+                    </div>
+                    <div class="cat-cap">
+                        <h5><a href="{{ url_for('services') }}">Skin Cancer Classification </a></h5>
+                        <p>Here is fast and precise skin cancer classification using a deep learning model trained on dermatological image data, offering users trustworthy results for early classification.</p>
+                        <a href="{{ url_for('services') }}" class="try-now-btn">Try Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services Area End -->
+
+<!-- Update the rest of the sections similarly using Flask's `url_for()` for static files and route URLs. -->
+
+<footer style="background-image: url('{{ url_for('static', filename='img/gallery/footer-bg.png') }}');">
+    <div class="footer-wrappr section-bg3">
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row">
+                        <div class="col-xl-10">
+                            <div class="footer-copy-right">
+                                <p>© 2025 StrokeSense - All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    window.onload = function () {
+        const preloader = document.getElementById('preloader-active');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    };
+</script>
+
+
+</body>
+</html>
