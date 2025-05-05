@@ -75,12 +75,22 @@
             right: 20px;
             z-index: 1055;
             display: none;
-            background-color: #28a745;
-            color: white;
             padding: 16px 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.3s ease-out;
+        }
+
+        .custom-toast-success {
+            background-color: #28a745;
+            /* Green */
+            color: white;
+        }
+
+        .custom-toast-danger {
+            background-color: #dc3545;
+            /* Red */
+            color: white;
         }
 
         .custom-toast-body {
@@ -251,11 +261,23 @@
         </div>
     </div>
 
+
     <script>
-        function showCustomToast(message) {
+        function showCustomToast(message, messageType) {
             const toast = document.getElementById('custom-toast');
             const messageEl = document.getElementById('custom-toast-message');
             messageEl.textContent = message;
+
+            // Remove any previous message type class
+            toast.classList.remove('custom-toast-success', 'custom-toast-danger');
+
+            // Add the correct class based on message type
+            if (messageType === 'success') {
+                toast.classList.add('custom-toast-success');
+            } else if (messageType === 'danger') {
+                toast.classList.add('custom-toast-danger');
+            }
+
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 4000);
         }
@@ -265,14 +287,18 @@
         }
 
         // Show message from Flask flash
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories = true) %}
         {% if messages %}
         window.onload = function () {
-            showCustomToast("{{ messages[0] }}");
+            const message = "{{ messages[0][1] }}"; // Get the message content
+            const messageType = "{{ messages[0][0] }}"; // Get the category (success, danger, etc.)
+            showCustomToast(message, messageType); // Show the toast with correct styling
         };
         {% endif %}
         {% endwith %}
+
     </script>
+
 
 
 </body>

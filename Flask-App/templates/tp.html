@@ -1,0 +1,187 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Health | Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gijgo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animated-headline.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
+
+    <style>
+        .custom-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1055;
+            display: none;
+            background-color: #28a745;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+            font-size: 18px;
+            /* 👈 Increase font size */
+        }
+
+
+        .custom-toast-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .custom-toast-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static', filename='img/logo/loder.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!--? Header Start -->
+        <div class="header-area">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-1">
+                            <div class="logo">
+                                <a href="{{ url_for('home') }}"><img
+                                        src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <div class="menu-main d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                                            <!-- <li><a href="about.html">About</a></li> -->
+                                            <li><a href="{{ url_for('services') }}">Services</a></li>
+                                            <!-- <li><a href="contact.html">Contact</a></li> -->
+                                            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="{{ url_for('static', filename='img/profile.png') }}" alt="Profile"
+                                                         alt="Profile" 
+                                                         style="width: 35px; height: 35px; vertical-align: middle;">
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+                                                    <li><a href="">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                                                                      
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+
+    <!-- Services Area End -->
+
+    <!-- Update the rest of the sections similarly using Flask's `url_for()` for static files and route URLs. -->
+
+
+
+    <!-- Custom Toast -->
+    <div id="custom-toast" class="custom-toast">
+        <div class="custom-toast-body">
+            <span id="custom-toast-message"></span>
+            <button onclick="hideCustomToast()" class="custom-toast-close">&times;</button>
+        </div>
+    </div>
+
+
+    <script>
+        function showCustomToast(message) {
+            const toast = document.getElementById('custom-toast');
+            const messageEl = document.getElementById('custom-toast-message');
+            messageEl.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 4000);
+        }
+
+        function hideCustomToast() {
+            document.getElementById('custom-toast').style.display = 'none';
+        }
+
+        window.onload = function () {
+            const preloader = document.getElementById('preloader-active');
+            if (preloader) preloader.style.display = 'none';
+
+            {% with messages = get_flashed_messages(with_categories = true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            showCustomToast("{{ message }}");
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        };
+    </script>
+
+
+</body>
+
+</html>

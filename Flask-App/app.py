@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from pymongo import MongoClient, errors
-from werkzeug.security import generate_password_hash  # For password hashing
+from werkzeug.security import generate_password_hash, check_password_hash  # For password hashing
+from datetime import timedelta
 import os
 
-
-# MongoDB URI
+# <------------------------MongoDB ------------------------>
 MONGO_URI = "mongodb://localhost:27017/"
 
 # Connect to MongoDB
@@ -20,6 +20,7 @@ except errors.ConnectionError as e:  # Catch the connection error
     print(f"MongoDB connection failed: {e}")
     db = None
 
+#<------------------------MongoDB------------------------>
 
 
 
@@ -27,7 +28,7 @@ except errors.ConnectionError as e:  # Catch the connection error
 app = Flask(__name__)
 
 app.secret_key = os.urandom(24) # Generates a random 24-byte string
-
+app.permanent_session_lifetime = timedelta(days=7)
 
 # Home route
 @app.route('/')
@@ -35,9 +36,35 @@ def home():
     return render_template('index.html')
 
 # Authentication routes
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        remember = request.form.get('remember')  
+
+        user = users_collection.find_one({"email": email})
+
+        if user:
+            if check_password_hash(user['password'], password):
+                session['user_id'] = str(user['_id'])
+                session['email'] = user['email']
+
+                # Handle "Remember Me"
+                if remember == "on":
+                    session.permanent = True
+                else:
+                    session.permanent = False
+
+                flash("Login successful!", "success")
+                return redirect(url_for('home'))
+            else:
+                flash("Invalid password. Please try again.", "danger")
+        else:
+            flash("Email not found. Please check your credentials.", "danger")
+    
     return render_template('login.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -138,27 +165,10 @@ def admin_panel():
 def feedback():
     return render_template('feedback.html')
 
-# Other pages
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
 
 @app.route('/services')
 def services():
     return render_template('services.html')
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
-
-@app.route('/blog-details')
-def blog_details():
-    return render_template('blog_details.html')
-
-@app.route('/elements')
-def elements():
-    return render_template('elements.html')
-
 
 
 @app.route('/koa')
@@ -168,6 +178,19 @@ def koa():
 @app.route('/skin-cancer')
 def skin_cancer():
     return render_template('comingsoon.html')  
+
+# Logout Route
+@app.route('/home')
+def logout():
+    # Clear all session data
+    session.clear()
+    flash("You have been logged out.", "info")
+    return redirect(url_for('login'))  # You can also redirect to 'home' if preferred
+
+
+@app.route('/tp')
+def tp():
+    return render_template('tp.html')
 
 @app.errorhandler(404)
 def not_found_error(error):
