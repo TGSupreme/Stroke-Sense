@@ -34,7 +34,7 @@
 
         main {
             flex: 1 0 auto;
-            background-image: url("assets/img/hero/Main-bg.png");
+            background-image: url("{{ url_for('static', filename='img/hero/Main-bg.png') }}");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: top center;
@@ -144,7 +144,7 @@
         <div class="container login-container">
             <div class="login-box">
                 <h2>Enter Details</h2>
-                <form action="/predict" method="post" id="contactForm" novalidate="novalidate">
+                <form action="{{ url_for('details') }}" method="post" id="contactForm" novalidate="novalidate">
 
                     <!-- Gender -->
                     <div class="mb-4">
@@ -187,10 +187,10 @@
                         </div>
                     </div>
 
-                    <!-- Age -->
+                    <!-- date of birth -->
                     <div class="mb-4">
-                        <label for="age" class="form-label">Age:</label>
-                        <input type="number" class="form-control" name="age" required>
+                        <label for="dob" class="form-label">Date of Birth:</label>
+                        <input type="date" class="form-control" name="dob" required>
                     </div>
 
                     <!-- Average Glucose Level -->

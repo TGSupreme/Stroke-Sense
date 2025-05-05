@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coming Soon | StrokeSense</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            background-image: url("{{ url_for('static', filename='img/hero/Main-bg.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .coming-soon-box {
+            background: rgb(255, 255, 255);
+            padding: 50px 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .coming-soon-box h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #5AAC4E;
+        }
+
+        .coming-soon-box p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .progress-container {
+            background: #ccc;
+            height: 20px;
+            width: 100%;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #5AAC4E;
+    animation: loading 3s ease-out forwards; /* Removed infinite, added forwards */
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 70%;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<!-- Preloader -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="{{ url_for('static', filename='img/logo/loder.png') }}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-area">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo -->
+                    <div class="col-xl-2 col-lg-2 col-md-1">
+                        <div class="logo">
+                            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-10">
+                        <div class="menu-main d-flex align-items-center justify-content-end">
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li><a href="{{ url_for('services') }}">Services</a></li>
+                                        <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-right-btn f-right d-none d-lg-block ml-15">
+                                <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <div class="coming-soon-box">
+        <h1>Coming Soon</h1>
+        <p>We’re working hard to bring this feature to life. Stay tuned for a powerful, AI-driven experience tailored for you.</p>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <p class="mt-4">Thank you for your patience and support.</p>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer style="background-image: url('{{ url_for('static', filename='img/gallery/footer-bg.png') }}');">
+    <div class="footer-wrappr section-bg3">
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row">
+                        <div class="col-xl-10">
+                            <div class="footer-copy-right">
+                                <p>© 2025 StrokeSense - All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JS Scripts -->
+<script src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.slicknav.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/animated.headline.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<script>
+    window.onload = function () {
+        const preloader = document.getElementById('preloader-active');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    };
+</script>
+
+</body>
+
+</html>
