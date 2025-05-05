@@ -39,18 +39,34 @@ def home():
 def login():
     return render_template('login.html')
 
-# Registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        # Store user data from registration form in session
-        session['full_name'] = request.form.get('username')
-        session['email'] = request.form.get('email')
-        session['password'] = generate_password_hash(request.form.get('password'))  # Hash password
-        
-        return redirect(url_for('details'))  # Redirect to second form
-    
+        full_name = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        # Check if email already exists
+        if users_collection.find_one({"email": email}):
+            flash("Email already exists! Please try another.", "danger")  # Flash error message for email
+            return redirect(url_for('register'))  # Redirect to the register form
+
+        # Check if passwords match
+        if password != confirm_password:
+            flash("Passwords do not match!", "danger")  # Flash error message for password mismatch
+            return redirect(url_for('register'))  # Redirect to the register form
+
+        # Hash password and store the user data in session
+        session['full_name'] = full_name
+        session['email'] = email
+        session['password'] = generate_password_hash(password)
+
+        # Redirect to another page (details page)
+        return redirect(url_for('details'))  
+
     return render_template('register.html')
+
 
 # Route to render the second form (data collection)
 @app.route('/details', methods=['GET', 'POST'])
