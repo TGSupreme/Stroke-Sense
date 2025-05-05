@@ -1,0 +1,61 @@
+<header>
+    <!--? Header Start -->
+    <div class="header-area">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo -->
+                    <div class="col-xl-2 col-lg-2 col-md-1">
+                        <div class="logo">
+                            <a href="{{ url_for('home') }}">
+                                <img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-10 col-lg-10 col-md-10">
+                        <div class="menu-main d-flex align-items-center justify-content-end">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                                        <li><a href="{{ url_for('services') }}">Services</a></li>
+                                        <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+
+                                        {% if session.get('user_id') %}
+                                        <!-- If user is logged in -->
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ url_for('static', filename='img/profile.png') }}" alt="Profile"
+                                                    style="width: 35px; height: 35px; vertical-align: middle;">
+                                            </a>
+                                            <ul class="submenu">
+                                                <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+                                                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            {% if not session.get('user_id') %}
+                            <!-- Login button outside of <ul> but still inside the flex container -->
+                            <div class="header-right-btn f-right d-none d-lg-block ml-15">
+                                <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>

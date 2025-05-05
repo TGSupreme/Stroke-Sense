@@ -98,47 +98,7 @@
         </div>
         <!-- Preloader Start -->
     <!-- Header (same as your main template) -->
-    <header>
-        <!--? Header Start -->
-        <div class="header-area">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <!-- Logo -->
-                        <div class="col-xl-2 col-lg-2 col-md-1">
-                            <div class="logo">
-                                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-md-10">
-                            <div class="menu-main d-flex align-items-center justify-content-end">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav> 
-                                        <ul id="navigation">
-                                            <li><a href="{{ url_for('home') }}">Home</a></li>
-                                            <!-- <li><a href="about.html">About</a></li> -->
-                                            <li><a href="{{ url_for('services') }}">Services</a></li>
-                                            <!-- <li><a href="contact.html">Contact</a></li> -->
-                                            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <div class="header-right-btn f-right d-none d-lg-block ml-15">
-                                    <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
-                                </div>
-                            </div>
-                        </div>   
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
+    {% include 'header.html' %}
 
     <!-- Main Stroke Prediction Form -->
     <main>
@@ -211,23 +171,7 @@
         </div>
     </main>
 
-    <footer style="background-image: url('{{ url_for('static', filename='img/gallery/footer-bg.png') }}');">
-        <div class="footer-wrappr section-bg3">
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row">
-                            <div class="col-xl-10">
-                                <div class="footer-copy-right">
-                                    <p>© 2025 StrokeSense - All rights reserved.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include 'footer.html' %}
 
         <!-- JS here -->
         <script src="{{ url_for('static', filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>

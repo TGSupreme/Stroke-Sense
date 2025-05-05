@@ -87,67 +87,7 @@
     </div>
     <!-- Preloader Start -->
 
-    <header>
-        <!--? Header Start -->
-        <div class="header-area">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <!-- Logo -->
-                        <div class="col-xl-2 col-lg-2 col-md-1">
-                            <div class="logo">
-                                <a href="{{ url_for('home') }}">
-                                    <img src="{{ url_for('static', filename='img/logo/logo.png') }}" alt="">
-                                </a>
-                            </div>
-                        </div>
-    
-                        <div class="col-xl-10 col-lg-10 col-md-10">
-                            <div class="menu-main d-flex align-items-center justify-content-end">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="{{ url_for('home') }}">Home</a></li>
-                                            <li><a href="{{ url_for('services') }}">Services</a></li>
-                                            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
-    
-                                            {% if session.get('user_id') %}
-                                            <!-- If user is logged in -->
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ url_for('static', filename='img/profile.png') }}" alt="Profile"
-                                                        style="width: 35px; height: 35px; vertical-align: middle;">
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
-                                                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                                                </ul>
-                                            </li>
-                                            {% endif %}
-                                        </ul>
-                                    </nav>
-                                </div>
-    
-                                {% if not session.get('user_id') %}
-                                <!-- Login button outside of <ul> but still inside the flex container -->
-                                <div class="header-right-btn f-right d-none d-lg-block ml-15">
-                                    <a href="{{ url_for('login') }}" class="btn header-btn">Login</a>
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-    
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
+    {% include 'header.html' %}
     
 
     <main>
@@ -287,23 +227,7 @@
 
     <!-- Update the rest of the sections similarly using Flask's `url_for()` for static files and route URLs. -->
 
-    <footer style="background-image: url('{{ url_for('static', filename='img/gallery/footer-bg.png') }}');">
-        <div class="footer-wrappr section-bg3">
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row">
-                            <div class="col-xl-10">
-                                <div class="footer-copy-right">
-                                    <p>© 2025 StrokeSense - All rights reserved.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include 'footer.html' %}
 
     <!-- Custom Toast -->
     <div id="custom-toast" class="custom-toast">

@@ -185,7 +185,7 @@ def logout():
     # Clear all session data
     session.clear()
     flash("You have been logged out.", "info")
-    return redirect(url_for('login'))  # You can also redirect to 'home' if preferred
+    return redirect(url_for('home'))  # You can also redirect to 'home' if preferred
 
 
 @app.route('/tp')
