@@ -61,22 +61,21 @@
     <!-- Preloader Start -->
     <!-- Header (same as your main template) -->
     {% include 'header.html' %}
-
     <main>
         <!-- Result Section Start -->
         <section class="result-section section-padding"
-            style="background: url('assets/img/gallery/wave-bg.png') no-repeat center center / cover;">
+            style="background: url('{{ url_for('static', filename='img/gallery/wave-bg.png') }}') no-repeat center center / cover;">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-10">
                         <div class="result-container text-center bg-light p-5 rounded shadow" data-aos="fade-up">
-                            <h1 class="result-heading mb-4">Prediction Result</h1>
-                            <p class="result-content lead text-primary">{{ prediction }}</p>
-                            <p class="feedback-message text-secondary mt-3">We care about your health. Please consult a
-                                medical professional for more details.</p>
+                            <h1 class="result-heading mb-4" style="color: #4CAF50;">Prediction Result</h1> <!-- Green color for heading -->
+                            <p class="result-content lead" style="color: #FF6347;">{{ prediction }}</p> <!-- Tomato color for result text -->
+                            <p class="feedback-message text-secondary mt-3">
+                                We care about your health. Please consult a medical professional for more details.
+                            </p>
                             <a href="{{ url_for('home') }}" class="btn btn-custom mt-4">Go Back Home</a>
-                            <h5 class="mt-4"><a href="{{ url_for('feedback') }}" class="text-warning">Give Feedback</a>
-                            </h5>
+                            <h5 class="mt-4"><a href="{{ url_for('feedback') }}" class="text-warning" style="color: #FFD700;">Give Feedback</a></h5> <!-- Golden color for feedback link -->
                         </div>
                     </div>
                 </div>
@@ -84,8 +83,6 @@
         </section>
         <!-- Result Section End -->
     </main>
-
-
 
     <!-- Footer Start -->
     {% include 'footer.html' %}

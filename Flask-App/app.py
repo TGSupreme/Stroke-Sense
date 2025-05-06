@@ -2,7 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from pymongo import MongoClient, errors
 from werkzeug.security import generate_password_hash, check_password_hash  # For password hashing
 from datetime import timedelta
+import numpy as np
+import pickle
 import os
+
+
+# <------------------------model ------------------------>
+with open('stroke-prediction.pkl', 'rb') as model_file:
+    model = pickle.load(model_file)
+# <------------------------model ------------------------>
+
 
 # <------------------------MongoDB ------------------------>
 MONGO_URI = "mongodb://localhost:27017/"
@@ -95,6 +104,7 @@ def register():
     return render_template('register.html')
 
 
+
 # Route to render the second form (data collection)
 @app.route('/details', methods=['GET', 'POST'])
 def details():
@@ -141,14 +151,30 @@ def main():
 def stroke_input():
     return render_template('stroke_input.html')
 
-@app.route('/stroke-prediction', methods=['POST'])
-def stroke_prediction():
-    # Dummy logic, replace with real model inference later
-    age = request.form.get('age')
-    gender = request.form.get('gender')
-    # Add other fields and your model logic here
-    prediction = "Low Risk"  # Placeholder
-    return render_template('stroke_result.html', prediction=prediction)
+# Route to handle prediction
+@app.route('/predict', methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        # Get form inputs
+        gender = request.form['gender']
+        age = request.form['age']
+        hypertension = request.form['hypertension']
+        heart_disease = request.form['heart_disease']
+        glucose = request.form['avg_glucose_level']
+        bmi = request.form['bmi']
+
+        # Prepare input for model
+        input_features = np.array([[float(gender), float(age), float(hypertension),
+                                    float(heart_disease), float(glucose), float(bmi)]])
+
+        # Predict using the model
+        prediction = model.predict(input_features)
+
+        # Interpret result
+        result = "The person is likely to have a stroke." if prediction[0] == 1 else "The person is unlikely to have a stroke."
+
+        # Render result page
+        return render_template('stroke_result.html', prediction=result)
 
 
 # User and Admin profile
@@ -184,6 +210,7 @@ def skin_cancer():
 def logout():
     # Clear all session data
     session.clear()
+
     flash("You have been logged out.", "info")
     return redirect(url_for('home'))  # You can also redirect to 'home' if preferred
 
