@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from pymongo import MongoClient, errors
 from werkzeug.security import generate_password_hash, check_password_hash  # For password hashing
-from datetime import timedelta
+from datetime import timedelta, datetime
 import numpy as np
 import pickle
 import os
@@ -38,6 +38,18 @@ app = Flask(__name__)
 
 app.secret_key = os.urandom(24) # Generates a random 24-byte string
 app.permanent_session_lifetime = timedelta(days=7)
+
+def calculate_age(dob_str):
+    if not dob_str:
+        return "N/A"
+    try:
+        dob = datetime.strptime(dob_str, "%Y-%m-%d")
+        today = datetime.today()
+        return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+    except:
+        return "Invalid DOB"
+    
+
 
 # Home route
 @app.route('/')
@@ -180,7 +192,36 @@ def predict():
 # User and Admin profile
 @app.route('/userprofile')
 def user_profile():
-    return render_template('userprofile.html')
+    # Ensure user is logged in
+    if 'email' not in session:
+        flash("Please log in to view your profile.", "warning")
+        return redirect(url_for('login'))
+
+    # Fetch user details from MongoDB
+    user = users_collection.find_one({"email": session['email']})
+
+    if not user:
+        flash("User not found.", "danger")
+        return redirect(url_for('home'))
+
+    # Convert ObjectId to string and prepare user dict
+    user_profile_data = {
+        "name": user.get("full_name", "N/A"),
+        "email": user.get("email", "N/A"),
+        "gender": user.get("gender", "N/A"),
+        "hypertension": "Yes" if user.get("hypertension") else "No",
+        "heart_disease": "Yes" if user.get("heart_disease") else "No",
+        "avg_glucose_level": user.get("avg_glucose_level", "N/A"),
+        "bmi": user.get("bmi", "N/A"),
+        'age': calculate_age(user.get('dob'))
+    }
+
+    return render_template("userprofile.html", user=user_profile_data)
+
+@app.route('/edit-profile', methods=['GET', 'POST'])
+def edit_profile():
+       return render_template('editprofile.html')  # Render the edit profile form with current user data
+
 
 @app.route('/admin')
 def admin_panel():
