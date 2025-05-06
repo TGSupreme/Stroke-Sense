@@ -1,9 +1,7 @@
-python -m venv venv
+#python -m venv venv
 
 venv\Scripts\activate
 
-pip install flask
+#pip freeze > requirements.txt #to generate the requirment.txt
 
-
-pip freeze > requirements.txt
-
+pip install -r requirements.txt
