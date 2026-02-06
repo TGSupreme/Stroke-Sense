@@ -108,61 +108,75 @@
                 <form action="{{ url_for('predict') }}" method="post" id="contactForm" novalidate="novalidate">
     
                     <!-- Gender -->
-                    <div class="mb-4">
-                        <label class="form-label">Gender:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="female" name="gender" value="0" required>
-                            <label class="form-check-label option" for="female">Female</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="male" name="gender" value="1">
-                            <label class="form-check-label option" for="male">Male</label>
-                        </div>
-                    </div>
+<div class="mb-4">
+    <label class="form-label">Gender:</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="female" name="gender" value="0"
+        {% if user.gender == 0 %}checked{% endif %} required>
+        <label class="form-check-label option" for="female">Female</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="male" name="gender" value="1"
+        {% if user.gender == 1 %}checked{% endif %}>
+        <label class="form-check-label option" for="male">Male</label>
+    </div>
+</div>
+
     
                     <!-- Hypertension -->
-                    <div class="mb-4">
-                        <label class="form-label">Hypertension:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="no_ht" name="hypertension" value="0" required>
-                            <label class="form-check-label option" for="no_ht">No</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="yes_ht" name="hypertension" value="1">
-                            <label class="form-check-label option" for="yes_ht">Yes</label>
-                        </div>
-                    </div>
+<div class="mb-4">
+    <label class="form-label">Hypertension:</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="no_ht" name="hypertension" value="0"
+        {% if user.hypertension == 0 %}checked{% endif %} required>
+        <label class="form-check-label option" for="no_ht">No</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="yes_ht" name="hypertension" value="1"
+        {% if user.hypertension == 1 %}checked{% endif %}>
+        <label class="form-check-label option" for="yes_ht">Yes</label>
+    </div>
+</div>
+
     
                     <!-- Heart Disease -->
-                    <div class="mb-4">
-                        <label class="form-label">Heart Disease:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="no_hd" name="heart_disease" value="0" required>
-                            <label class="form-check-label option" for="no_hd">No</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="yes_hd" name="heart_disease" value="1">
-                            <label class="form-check-label option" for="yes_hd">Yes</label>
-                        </div>
-                    </div>
+<div class="mb-4">
+    <label class="form-label">Heart Disease:</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="no_hd" name="heart_disease" value="0"
+        {% if user.heart_disease == 0 %}checked{% endif %} required>
+        <label class="form-check-label option" for="no_hd">No</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" id="yes_hd" name="heart_disease" value="1"
+        {% if user.heart_disease == 1 %}checked{% endif %}>
+        <label class="form-check-label option" for="yes_hd">Yes</label>
+    </div>
+</div>
+
     
                     <!-- Age -->
-                    <div class="mb-4">
-                        <label for="age" class="form-label">Age:</label>
-                        <input type="number" class="form-control" name="age" required>
-                    </div>
+<div class="mb-4">
+    <label for="age" class="form-label">Age:</label>
+    <input type="number" class="form-control" name="age" value="{{ user.age }}" required>
+</div>
+
     
                     <!-- Average Glucose Level -->
-                    <div class="mb-4">
-                        <label for="avg_glucose_level" class="form-label">Average Glucose Level:</label>
-                        <input type="number" step="any" class="form-control" name="avg_glucose_level" required>
-                    </div>
+<div class="mb-4">
+    <label for="avg_glucose_level" class="form-label">Average Glucose Level:</label>
+    <input type="number" step="any" class="form-control" name="avg_glucose_level"
+    value="{{ user.avg_glucose_level }}" required>
+</div>
+
     
                     <!-- BMI -->
-                    <div class="mb-4">
-                        <label for="bmi" class="form-label">BMI:</label>
-                        <input type="number" step="any" class="form-control" name="bmi" required>
-                    </div>
+<div class="mb-4">
+    <label for="bmi" class="form-label">BMI:</label>
+    <input type="number" step="any" class="form-control" name="bmi"
+    value="{{ user.bmi }}" required>
+</div>
+
     
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary mt-4">Predict Now</button>

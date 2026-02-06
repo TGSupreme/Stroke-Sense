@@ -81,15 +81,17 @@
                             <div class="mb-4">
                                 <label for="name" class="form-label">Name:</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your name" required>
+                                    placeholder="Enter your name" value="{{ user.name }}" required>
                             </div>
+
 
                             <!-- Email -->
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email:</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email" required>
+                                    placeholder="Enter your email" value="{{ user.email }}" required>
                             </div>
+
 
                             <!-- Feedback -->
                             <div class="mb-4">
@@ -109,10 +111,10 @@
     </main>
 
     {% include 'footer.html' %}
-    
-    
+
+
     <script>
-        setTimeout(function() {
+        setTimeout(function () {
             const preloader = document.getElementById('preloader-active');
             preloader.style.display = 'none';
         }, 500); // hides preloader after 3 seconds

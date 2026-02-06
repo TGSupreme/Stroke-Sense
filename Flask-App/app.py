@@ -161,7 +161,27 @@ def main():
 # Stroke prediction pages
 @app.route('/stroke-input')
 def stroke_input():
-    return render_template('stroke_input.html')
+    if 'email' not in session:
+        flash("Please log in to access this page.", "warning")
+        return redirect(url_for('login'))
+
+    user = users_collection.find_one({"email": session['email']})
+    
+    if not user:
+        flash("User data not found.", "danger")
+        return redirect(url_for('main'))
+
+    user_data = {
+        "gender": 0 if user.get("gender", "").lower() == "female" else 1,
+        "age": calculate_age(user.get("dob")),
+        "hypertension": 1 if user.get("hypertension") else 0,
+        "heart_disease": 1 if user.get("heart_disease") else 0,
+        "avg_glucose_level": user.get("avg_glucose_level", ""),
+        "bmi": user.get("bmi", "")
+    }
+
+    return render_template('stroke_input.html', user=user_data)
+
 
 # Route to handle prediction
 @app.route('/predict', methods=['POST'])
@@ -230,7 +250,16 @@ def admin_panel():
 # Feedback view
 @app.route('/feedback')
 def feedback():
-    return render_template('feedback.html')
+    user_data = {}
+    if 'email' in session:
+        user = users_collection.find_one({"email": session['email']})
+        if user:
+            user_data = {
+                "name": user.get('full_name', ''),
+                "email": user.get('email', '')
+            }
+
+    return render_template('feedback.html', user=user_data)
 
 
 @app.route('/services')
